@@ -1,0 +1,206 @@
+@charset "utf-8";
+/* ANYI - CSS - MAIN
+ * https://github.com/anyisoft-huawei
+ * 安逸 E-mail: yxhuawei@qq.com
+ * License MIT
+ */
+
+/* 全局部分 */
+body{margin: 0 0px auto;}
+*{user-select: none;}/*禁止选择div文本*/
+*::after, *::before { margin: 0 auto; padding: 0; box-sizing: border-box;  }
+li{list-style: none;}/*取消li的默认风格*/
+[anyi-expand="false"] ul{ display: none; }/*设置ul的未展开状态*/
+[anyi-expand="false"] dl{ display: none; }/*设置dl的未展开状态*/
+/* 风格 */
+.anyi-inline{display:inline!important;}
+.anyi-inblock{display:inline-block!important;}
+.anyi-block{display:block!important;}
+.anyi-flex{display:flex!important;}
+.anyi-item{display:list-item!important;}
+
+/* 页面布局 */
+.anyi-header{ margin: 0 auto; width: 100%; height: 50px; display:inline-block; position: fixed; background-color: #fff;box-shadow: 0px 1px 2px #00000054; z-index: 9000;}
+.anyi-nvi{ display:inline-block; width: 15%; height: calc(100% - 86px); top: 50px; margin: 5px 0; display:block; position: fixed; border-right: 1px solid #0000001f; overflow:auto; text-align: center; z-index: 8000;}
+.anyi-content{ display:block; position: fixed; top: 50px; left: 15%; width: calc(85% - 10px); height: calc(100% - 86px); margin: 5px 5px auto; border-right:none; overflow:auto;z-index: 7000; }
+.anyi-footer{ position: relative; height: 20px; display:block; border-top: 1px solid #0000001f; text-align: center;background-color: #fff;border-left:1px solid #0000001f; }
+.anyi-footer-fixed{ position: fixed; height: 26px; line-height: 26px;top:calc(100% - 26px) ; left: 0%; width: 100% ; display:block; border-top: 1px solid #0000001f; background-color: #fff;}
+
+.anyi-float-left{ float: left!important;}
+.anyi-left{position: absolute;left: 0; top:0;}
+.anyi-right{position: absolute;right: 0; top:0;}
+.anyi-nva{ margin: 0 auto; padding: 0 30px; line-height: 50px;}
+
+/* 轮播 */
+.anyi-carousel{ display: inline-block; position: relative; width: 300px; height: 100px; overflow: hidden; margin: 2px;background-color: #f3f1f1; }
+.anyi-carousel-box{  width: 1200px; height: 100%; }
+.anyi-carousel-img{ width: 300px; height: 100%; display:inline-block; object-fit:contain; transition:all 1s ease ; }
+.anyi-carousel-left{  display: inline-block;position: absolute;left: 0;top: 25%;height: 50%;width: 30px;background-color: transparent;}
+.anyi-carousel-right{  display: inline-block;position: absolute;right: 0;top: 25%;height: 50%;width: 30px;background-color: transparent;}
+.anyi-carousel-sbox{  display: inline-block;position: absolute;text-align: center;bottom: 0;width: 100%;}
+.anyi-carousel-sitem{ width: 8px;height: 8px;border-radius: 100%;padding: 0;border:none;background-color: #f87878;}
+
+.anyi-carousel-img:hover{ transform: translate(-50px,0); }/*测试*/
+
+
+.anyi-bannerbox{ width: 15%; height: 80px; overflow: hidden; }
+.anyi-banner{ width: 500%; height: 80px; animation:banner 4s infinite; }
+.anyi-banner img{ width: 20%; height: 100%; float: left; object-fit:contain; }
+@keyframes banner { 0%,50%{left: 0;} 50%,100%{left: -100%;} }
+
+/* 字体 */
+.anyi-font8{ font-size: 8px!important;}
+.anyi-font10{ font-size: 10px!important;}
+.anyi-font12{ font-size: 12px!important;}
+.anyi-font13{ font-size: 13px!important;}
+.anyi-font15{ font-size: 15px!important;}
+.anyi-font16{ font-size: 16px!important;}
+.anyi-font17{ font-size: 17px!important;}
+.anyi-font18{ font-size: 18px!important;}
+.anyi-font19{ font-size: 19px!important;}
+.anyi-font20{ font-size: 20px!important;}
+.anyi-font22{ font-size: 22px!important;}
+.anyi-font26{ font-size: 26px!important;}
+/* 自定义字体图标 */
+@font-face {
+    font-family: 'iconfont';
+    src: url('font/iconfont.svg');
+}
+.anyi-iconfont{ font-family: 'iconfont'; font-size: 16px; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+ 
+/* 卡片 */
+.anyi-card{ border: 1px solid #00000054; box-shadow: -2px 2px 10px #00000054; }
+.anyi-card2{ border: 1px solid #00000054; box-shadow: -2px -2px 10px #00000054; }
+/* 菜单 */
+.anyi-menu{ display: block; line-height: 30px; margin: 0; padding: 0; color: #e74514; }
+.anyi-menu ul{margin: 0; padding: 0;}
+.anyi-menu dl{margin: 0; padding: 0;}
+.anyi-menu dd{ margin: 0; color: #000; }
+.anyi-menu dd:hover{ background-color: #7a7a7a6b; }
+.anyi-menu li{ margin: 0;  color: #000; }
+.anyi-menu li:hover{ background-color: #7a7a7a6b; }
+.anyi-menu-line{background-color:   #3d973141;margin:5px 5px; height: 1px; box-shadow: 0px 1px 10px #00000054;}
+.anyi-menu:before{ display: inline; position: absolute; content: "^"; margin: 0; right: 10px; }
+.anyi-menu[anyi-expand="false"]:before { content: "<"; }
+
+.anyi-menuet{ display: block; line-height: 30px; margin: 0; padding: 0; color: #e74514; }
+.anyi-menuet dd{ margin: 0; color: #000; }
+.anyi-menuet dd:hover{ background-color: #7a7a7a6b; }
+.anyi-menuet li{ margin: 0;  color: #000; }
+.anyi-menuet li:hover{ background-color: #7a7a7a6b; }
+/* 状态 */
+.anyi-selected{ background-color: #91f87cd5; }/*选择*/
+.anyi-unexpand dl{ display: none; }/*收缩*/
+.anyi-unexpand ul{ display: none; }/*收缩*/
+.anyi-hidden{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    transition: 1.25s;
+}
+
+
+/* 图标 */
+.anyi-icon{width: 32px;height: 32px;border-radius: 100%; vertical-align: middle; opacity: .8; transition: .15s; object-fit: contain;}
+.anyi-icon:hover { opacity: 1; transition: .15s; cursor: pointer; }
+
+ 
+/* 颜色 */
+
+ 
+/* 对齐 */
+.anyi-alignc{text-align: center!important;}
+.anyi-aligncc{justify-content: center; align-items: center;}
+ 
+/* 行高 */
+.anyi-line8{ line-height: 0.8em!important;}
+.anyi-line{ line-height: 1em!important;}
+.anyi-line12{ line-height: 1.2em!important;}
+.anyi-line15{ line-height: 1.5em!important;}
+.anyi-line18{ line-height: 1.8em!important;}
+.anyi-line20{ line-height: 2em!important;}
+  
+/* icon */
+
+/* 输入框 */
+.anyi-input{ width: 350px; height: 40px; margin: 4px 0; padding-left: 25px; font-size: 1em; letter-spacing: .15px; border: none; outline: none; background-color: #ecf0f3; border-radius: 1em; box-shadow: inset 2px 2px 4px #d1d9e6, inset -2px -2px 4px #f9f9f9; }
+.anyi-input:focus { box-shadow: inset 4px 4px 4px #d1d9e6, inset -4px -4px 4px #f9f9f9;transition: .25s ease;  }
+
+/* 默认单选框 */
+input[type="radio"]{ font-size: 16px; min-width: 1em; min-height: 1em; vertical-align: middle;}
+/* 传统单选框 */
+.anyi-radio{ display:inline-block; width: 1em!important; height: 1em!important; border-radius: 100%; border: 1px solid #09BB07; box-shadow: -1px 1px 3px #0000009a; background-color: #ffffff; font-size:18px; -webkit-appearance:none; -moz-appearance:none; appearance:none; }
+.anyi-radio:checked{background-color: #09BB07; }
+.anyi-radio:hover{box-shadow: 0px 0px 5px 2px #0abb07bb; }
+.anyi-radio:before{display:inline-block; position: relative; content:''; font-size:0.7em; top: -0.2em; left: 0.2em; }
+.anyi-radio:checked:before{ content:'\2714'; color:#eff7ef; }
+.anyi-radio:disabled{background-color: #ccc;border:none;cursor: not-allowed;}
+/* 单选框 */
+.anyi-radio2{ display:inline-block; 
+    width: 3em!important; 
+    height: 1em!important; 
+    border-bottom: 3px solid #09BB07; 
+    border-radius: 0px;
+    margin-left: 0!important;
+    margin-right: 0!important;
+    margin-bottom: 1em;
+    background-color: #ffffff00; 
+    font-size:18px; -webkit-appearance:none; -moz-appearance:none; appearance:none; }
+    .anyi-radio2:hover{font-weight: bold; }
+    .anyi-radio2:before{display:inline-block; 
+       position: relative; content:'文本'; 
+       width: 0;
+       white-space:nowrap;
+       font-size:1em;  color:#e74514; color:#000000; top: 0em; left: 0em;}
+    .anyi-radio2:after{display:inline-block; 
+       position: relative; content:'\29bf'; 
+       color: #09BB07; 
+       background-color:#fff;
+       border-radius: 100%;
+       width: 1em;
+       height: 1em;
+       font-size: 1.2em;
+       box-shadow: -1px 1px 3px #0000009a; 
+       top: 0em;
+        left: -0.2em;}
+    .anyi-radio2:checked:after{ 
+        content:'\29bf'; 
+        box-shadow: 0px 0px 10px 3px #0abb07bb; 
+       }
+   
+    .anyi-radio2:disabled{background-color: #ccc;border:none;cursor: not-allowed;}
+
+
+/* 默认复选框 */
+input[type="checkbox"]{ font-size: 18px; min-width: 1em; min-height: 1em; vertical-align: middle; }
+/* 传统复选框 */
+.anyi-checkbox{ display:inline-block; width: 1em!important; height: 1em!important; border-radius: 3px; border: 1px solid #09BB07; box-shadow: -1px 1px 3px #0000009a; background-color: #ffffff; font-size:18px; -webkit-appearance:none; -moz-appearance:none; appearance:none; }
+.anyi-checkbox:checked{background-color: #09BB07; }
+.anyi-checkbox:hover{box-shadow: 0px 0px 5px 2px #0abb07bb; }
+.anyi-checkbox:before{display:inline-block; position: relative; content:''; font-size:0.7em; top: -0.2em; left: 0.2em; }
+.anyi-checkbox:checked:before{ content:'\2714'; color:#eff7ef; }
+.anyi-checkbox:disabled{background-color: #ccc;border:none;cursor: not-allowed;}
+/* 滑块复选框 */
+.anyi-switch{ display:inline-block; font-size: 15px; width: 2.5em; height: 1em!important; border-radius: 1em; background: #ccc; box-shadow: -1px 1.5px 3px #0000009a; -webkit-appearance:none; -moz-appearance:none; appearance:none; outline: none; cursor: pointer; }
+.anyi-switch:checked{ background-color: #09BB07;}
+.anyi-switch:hover{box-shadow: 0px 0px 5px 2px #0abb07bb;}
+.anyi-switch:before{ display:inline-block; position: relative; content:''; left: 0.05em; top: 0.05em; width: 0.9em; height: 0.9em; border-radius: 100%; background: #fff; transition:0.3s ease; }
+.anyi-switch:checked:before{ content:''; left: calc(100% - 0.95em); }
+.anyi-switch:after{ content:'关'; position: relative; font-size: 0.7em; color: #fff; top: -0.2em; left:calc(100% - 3em); }
+.anyi-switch:checked:after{ content:'开'; left: -0.5em; }
+.anyi-switch:disabled{background-color: #ccc;cursor: not-allowed;}
+/* 滑块复选框 */
+.anyi-switch2{ display:inline-block; font-size: 15px; width: 3.5em; height: 1em!important; border-radius: 1em; background: #ccc; box-shadow: -1px 1.5px 3px #0000009a; -webkit-appearance:none; -moz-appearance:none; appearance:none; outline: none; cursor: pointer; }
+.anyi-switch2:checked{ background-color: #09BB07;}
+.anyi-switch2:hover{box-shadow: 0px 0px 5px 2px #0abb07bb;}
+.anyi-switch2:before{ display:inline-block; position: relative; content:''; left: 0.05em; top: 0.05em; width: 0.9em; height: 0.9em; border-radius: 100%; background: #fff; transition:0.3s ease; }
+.anyi-switch2:checked:before{ content:''; left: calc(100% - 0.95em); }
+.anyi-switch2:after{ display:inline-block;content: attr(anyi-n);position: relative; font-size: 0.5em; color: #fff; top: -20%; left:calc(100% - 4em); }
+.anyi-switch2:checked:after{ content: attr(anyi-y); left: -0.9em; }
+.anyi-switch2:disabled{background-color: #ccc;cursor: not-allowed;}
+
+/* 按钮 */
+button{ position: relative; width: 180px; height: 50px; border-radius: 1em; border: none; outline: none; box-shadow: -1px 1px 3px #0000009a; font-weight: 700; font-size: 14px; letter-spacing: 1.15px; background-color: #4B70E2; color: #f9f9f9; box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9; cursor: pointer;}
+button:hover{box-shadow: 0px 0px 5px 2px #4B70E2; transition: .25s;}
+button:active,button:focus{background-color: #0945f8;}
+
