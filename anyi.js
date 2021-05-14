@@ -150,21 +150,33 @@ void function($) {
     /** 提供对菜单的初始化和添加 */
     ANYI.prototype.menus={};
     
+
     /**
-     * 向集合中添加菜单元素(待增加递归处理)
-     * @param {*} id 菜单的id
-     * @param {*} o 菜单参数
+     * 递归创建菜单
+     * @param {*} menus 要添加到菜单容器
+     * @param {*} o 菜单配置
+     * @param {*} f 递归深度
      */
-    ANYI.prototype.addmenu= function (id,o) {
-        var m = document.getElementById(id);//获取元素
+    var createmenu = function(menus, o, f) {
+        var m = document.createElement("div");
+        m.setAttribute("class", "anyi-menu");//设置默认风格
+        menus.appendChild(m);
         var title = document.createElement("span");
         title.innerHTML = o["title"];
         m.appendChild(title);//设置菜单标题
-        m.setAttribute("anyi-expand", "true");//设置默认为展开
         //为菜单关联展开函数
-        m.onclick=function(e){
-            e.target.setAttribute("anyi-expand",e.target.getAttribute("anyi-expand")=="false"?"true":"false");
-        };
+        if(f < 1){
+            m.onclick=function(e){
+                if(e.target.classList.contains("anyi-menu")){
+                    if(e.target.hasAttribute("anyi-unexpand")) e.target.removeAttribute("anyi-unexpand");
+                    else e.target.setAttribute("anyi-unexpand","");
+                }else if(e.target.parentElement.classList.contains("anyi-menu")){
+                    if(e.target.parentElement.hasAttribute("anyi-unexpand")) e.target.parentElement.removeAttribute("anyi-unexpand");
+                    else e.target.parentElement.setAttribute("anyi-unexpand","");
+                }
+            };
+        }
+        f++;
         //循环添加元素
         if(o["items"]){
             var ul = document.createElement("ul");
@@ -173,21 +185,33 @@ void function($) {
                 const el = o["items"][index];
                 var li = document.createElement("li");
                 ul.appendChild(li);
-                if(el["href"]){
-                    li.innerHTML = "<a href='"+ el["href"] +"'>" + el["title"] + "</a>";//为菜单追加原始url
-                }else {
-                    li.innerText = el["title"];
-                    if(el["anyiurl"]){
-                        li.setAttribute("anyi-url", el["anyiurl"]);
-                        li.onclick=function(e) {
-                            clickurl(e.target.getAttribute("anyi-url"));//子页面的url处理事件
-                        }
+                if(el["items"])createmenu(li,el["items"]);//如果有子节点递归调用
+                else{
+                    if(el["href"]){
+                        li.innerHTML = "<a href='"+ el["href"] +"'>" + el["title"] + "</a>";//为菜单追加原始url
+                    }else {
+                        li.innerText = el["title"];
+                        if(el["anyiurl"]){
+                            li.setAttribute("anyi-url", el["anyiurl"]);
+                            li.onclick=function(e) {
+                                clickurl(e.target.getAttribute("anyi-url"));//子页面的url处理事件
+                            }
+                        };
                     };
-                };
-                if(el["onclick"])  li.onclick=el["onclick"];//如果有自定义事件则覆盖
+                    if(el["onclick"])  li.onclick=el["onclick"];//如果有自定义事件则覆盖
+                }
             }
         }
-        //ANYI.menus[id]=o;//存储配置
+    }
+    /**
+     * 向集合中添加菜单元素(待增加递归处理)
+     * @param {*} id 菜单的id
+     * @param {*} o 菜单参数
+     */
+    ANYI.prototype.addmenu= function (id,o) {
+        var menus = document.getElementById(id);//获取要添加的节点
+        createmenu(menus, o, 0);
+        ANYI.prototype.menus[id]=o;//存储配置
     }
 
     /**
@@ -196,9 +220,20 @@ void function($) {
      */
     ANYI.prototype.intimenu=function(id) {
         var m = document.getElementById(id);//获取元素
-        for (let index = 0; index < m.childNodes.length; index++) {
-            const el = m.childNodes[index];
-            
+        for (let index = 0; index < m.children.length; index++) {
+            const el = m.children[index];
+            if(el.classList.contains("anyi-menu")){
+                //为菜单关联展开函数
+                el.onclick=function(e){
+                    if(e.target.classList.contains("anyi-menu")){
+                        if(e.target.hasAttribute("anyi-unexpand")) e.target.removeAttribute("anyi-unexpand");
+                        else e.target.setAttribute("anyi-unexpand","");
+                    }else if(e.target.parentElement.classList.contains("anyi-menu")){
+                        if(e.target.parentElement.hasAttribute("anyi-unexpand")) e.target.parentElement.removeAttribute("anyi-unexpand");
+                        else e.target.parentElement.setAttribute("anyi-unexpand","");
+                    }
+                };
+            }
         }
     }
 
@@ -311,8 +346,8 @@ void function($) {
                     }
                 }
                 if(i < that.bs.length){//如果有按钮组
-                    if(ii == i) that.bs[i].setAttribute("anyi-selected","true");
-                    else that.bs[i].setAttribute("anyi-selected","");
+                    if(ii == i) that.bs[i].setAttribute("anyi-selected", "");
+                    else that.bs[i].removeAttribute("anyi-selected");
                 }
             };
             that.index = ii;
@@ -329,7 +364,7 @@ void function($) {
          * @param {*} id 要初始化的id
          * @param {*} o 轮播的配置
          */
-     ANYI.prototype.initlunbos=function(id, o) {
+    ANYI.prototype.initlunbos=function(id, o) {
         var m = document.getElementById(id);//获取元素
         var imgs=[];
         //遍历图片添加到组
@@ -345,7 +380,6 @@ void function($) {
             var btn = document.createElement("button");
             btn.setAttribute("class", fg);
             btn.setAttribute("style","z-index: 200;");
-            btn.innerText = "<<";//待修改
             btn.onclick =  function(){
                 nexti = lb.index- 1;
                 if(nexti < 0) nexti=lb.imgs.length - 1;
@@ -359,7 +393,6 @@ void function($) {
             var btn = document.createElement("button");
             btn.setAttribute("class", fg);
             btn.setAttribute("style","z-index: 200;");
-            btn.innerText = ">>";//待修改
             btn.onclick = lb.next;//关联动作
             m.appendChild(btn);
         }
@@ -384,23 +417,12 @@ void function($) {
 
     };
 
-    /**
-         * 添加轮播
-         * @param {*} id 要添加到id
-         * @param {*} o 要添加的轮播内容
-         */
-    ANYI.prototype.addlunbos=function(id, o) {
-            
 
-    };
-    
-    /**
-     * 移除轮播
-     * @param {*} id 要移除的轮播id
-     */
-    ANYI.prototype.removelunbos=function(id) {
-        
-    };
+
+
+
+
+
 
 
     $.anyi =  new ANYI();
