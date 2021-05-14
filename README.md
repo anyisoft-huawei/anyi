@@ -33,3 +33,23 @@ License MIT
  lb,rb:左右按钮风格类名，值为""则默认，不使用则不添加按钮  
  bs:按钮组风格类名，值为""则默认，不使用则不添加按钮组  
  time:间隔时间(毫秒)
+
+
+## 菜单的使用
+~~~
+<div id="menus"  style="text-align: center;display: inline;"></div>
+~~~
+脚本里调用
+~~~
+ anyi.addmenu("menu",{
+     "title":"新增",
+          "items":[
+                    { id:"m001", title:"菜单项1", href:"http://www.baidu.com" },
+                    { id:"m002", title:"菜单项2", anyiurl:"http://www.baidu.com"},
+                    { id:"m002", title:"菜单项3", onclick:function(e){
+                        //
+                    }}
+                ]
+ });
+~~~
+
