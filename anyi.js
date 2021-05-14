@@ -259,16 +259,14 @@ void function($) {
     }
     
 
-
-
-  /**
-         * 创建轮播
-         * @param {*} imgs 图片组
-         * @param {*} bs 按钮组
-         * @param {*} w 宽度
-         * @param {*} h 高度
-         * @param {*} t 高度
-         */
+   /**
+    * 创建轮播
+    * @param {*} imgs 图片组
+    * @param {*} w 宽度
+    * @param {*} h 高度
+    * @param {*} t 类型
+    * @param {*} time 间隔时间
+    */
    var lunbo = function(imgs,w,h,t,time) {
         var that = this;
         this.imgs = imgs;
