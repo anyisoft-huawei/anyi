@@ -2,10 +2,13 @@
 前端UI  
 License MIT  
 
-##引入
+## 引入
+~~~
+<link href='../anyi/css/anyi.css' rel='stylesheet'>
+<script type="text/javascript" src="../anyi/anyi.js"></script>   
+~~~
 
-
-##轮播的使用
+## 轮播的使用
 这里用一段html示例使用
 ~~~
    <!-- 轮播 -->
