@@ -87,8 +87,12 @@ void function($) {
         }
         o.open('POST', u);
 		o.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        //o.setRequestHeader("Access-Control-Allow-Origin", "*");
         o.send(JSON.stringify(d));
+    }
+
+    ANYI.prototype.send = function(){
+        const client = new net.Socket();
+        
     }
 
     /**
@@ -168,11 +172,11 @@ void function($) {
         if(f < 1){
             m.onclick=function(e){
                 if(e.target.classList.contains("anyi-menu")){
-                    if(e.target.hasAttribute("anyi-unexpand")) e.target.removeAttribute("anyi-unexpand");
-                    else e.target.setAttribute("anyi-unexpand","");
+                    if(e.target.hasAttribute("anyi-expand")) e.target.removeAttribute("anyi-expand");
+                    else e.target.setAttribute("anyi-expand","");
                 }else if(e.target.parentElement.classList.contains("anyi-menu")){
-                    if(e.target.parentElement.hasAttribute("anyi-unexpand")) e.target.parentElement.removeAttribute("anyi-unexpand");
-                    else e.target.parentElement.setAttribute("anyi-unexpand","");
+                    if(e.target.parentElement.hasAttribute("anyi-expand")) e.target.parentElement.removeAttribute("anyi-expand");
+                    else e.target.parentElement.setAttribute("anyi-expand","");
                 }
             };
         }
@@ -226,11 +230,11 @@ void function($) {
                 //为菜单关联展开函数
                 el.onclick=function(e){
                     if(e.target.classList.contains("anyi-menu")){
-                        if(e.target.hasAttribute("anyi-unexpand")) e.target.removeAttribute("anyi-unexpand");
-                        else e.target.setAttribute("anyi-unexpand","");
+                        if(e.target.hasAttribute("anyi-expand")) e.target.removeAttribute("anyi-expand");
+                        else e.target.setAttribute("anyi-expand","");
                     }else if(e.target.parentElement.classList.contains("anyi-menu")){
-                        if(e.target.parentElement.hasAttribute("anyi-unexpand")) e.target.parentElement.removeAttribute("anyi-unexpand");
-                        else e.target.parentElement.setAttribute("anyi-unexpand","");
+                        if(e.target.parentElement.hasAttribute("anyi-expand")) e.target.parentElement.removeAttribute("anyi-expand");
+                        else e.target.parentElement.setAttribute("anyi-expand","");
                     }
                 };
             }
