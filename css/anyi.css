@@ -51,7 +51,7 @@ li{list-style: none;}/*取消li的默认风格*/
 .anyi-iconfont{ font-family: 'iconfont'; font-size: 16px; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
  
 /* 卡片 */
-.anyi-card{ border: 1px solid #00000054; box-shadow: -2px 2px 10px #00000054;background-color: #fff; border-radius: 0.3em;}
+.anyi-card{ border: 1px solid #00000054; box-shadow: -2px 2px 10px #00000054;background-color: #fff; border-radius: 0.3em; margin: 2px;}
 .anyi-card2{ border: 1px solid #00000054; box-shadow: -2px -2px 10px #00000054;background-color: #fff;  }
 
 /* 菜单 */
@@ -64,7 +64,7 @@ li{list-style: none;}/*取消li的默认风格*/
 .anyi-menu dd,
 .anyi-menu li{ margin: 2px 10px;padding: 0 8px;}
 .anyi-menu dd:hover,
-.anyi-menu li:hover{ background-color: #f7b1b186; border-radius: 0.5em;box-shadow:inset  3px 3px 3px #f7b1b186,inset -3px -3px 3px #f7b1b186;;}
+.anyi-menu li:hover{ background-color: #f7b1b186; border-radius: 0.5em;box-shadow:inset  3px 3px 3px #f7b1b186,inset -3px -3px 3px #f7b1b186;}
 .anyi-menu:before{ display: inline; position: absolute; content: "\2b9c"; margin: 0; width: 1em; color: #337aff;left: calc(100% - 1em);}
 .anyi-menu[anyi-expand]:before { content: "\2b9f"; }
 .anyi-menu li[anyi-selected]{background-color: #f7b1b186; border-radius: 0.5em;}
@@ -87,8 +87,6 @@ li{list-style: none;}/*取消li的默认风格*/
 .anyi-menudown dd:hover{ background-color: #f7b1b186; }
 
 /* 状态 */
-.anyi-unexpand dl{ display: none; }/*收缩*/
-.anyi-unexpand ul{ display: none; }/*收缩*/
 .anyi-hidden{
     visibility: hidden;
     opacity: 0;
@@ -197,13 +195,13 @@ input[type="checkbox"]{ font-size: 18px; min-width: 1em; min-height: 1em; vertic
 .anyi-switch2:disabled{background-color: #ccc;cursor: not-allowed;}
 
 /* 按钮 */
-.anyi-btn{ position: relative; width: 180px; height: 50px; border-radius: 1em; border: none; outline: none; box-shadow: -1px 1px 3px #0000009a; font-weight: 700; font-size: 14px; letter-spacing: 1.15px; background-color: #4B70E2; color: #f9f9f9; box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9; cursor: pointer;}
-.anyi-btn:hover{box-shadow: 0px 0px 5px 2px #4B70E2; transition: .25s;}
+.anyi-btn{ position: relative; width: 100px; height: 38px; margin: 2px; border-radius: 1em; border: none; outline: none; font-weight: 700; font-size: 14px; letter-spacing: 1.15px; background-color: #5c7fe9; color: #f9f9f9; box-shadow:inset 3px 3px 8px #4B70E2,inset -3px -3px 8px #4B70E2; cursor: pointer;}
+.anyi-btn:hover{box-shadow:inset  3px 3px 3px #0040ff,inset -3px -3px 3px #0040ff, 0px 0px 2px 1px #0040ff; transition: .25s;}
 .anyi-btn:active,.anyi-button:focus{background-color: #0945f8;}
 
 /* 透明按钮 */
-.anyi-btn-t{ position: relative; width: 100px; height: 38px; border-radius: 1em; border: none; outline: none; box-shadow: -1px 1px 3px #0000009a; font-weight: 700; font-size: 14px; letter-spacing: 1.15px; background-color: transparent; color: #334cdf85; box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #f9f9f9; cursor: pointer;}
-.anyi-btn-t:hover{box-shadow: 0px 0px 5px 2px #4B70E2; transition: .25s;}
+.anyi-btn-t{ position: relative; width: 100px; height: 38px; border-radius: 1em; border: none; outline: none; font-weight: 700; font-size: 14px; letter-spacing: 1.15px; background-color: transparent; color: #334cdf85; box-shadow:inset  3px 3px 3px #d1d9e6,inset -3px -3px 3px #d1d9e6; cursor: pointer;}
+.anyi-btn-t:hover{box-shadow:inset  3px 3px 3px #9cb2f1,inset -3px -3px 3px #9cb2f1;transition: .25s;}
 
 /* 轮播 */
 .anyi-lunbo{ display: inline-block; position: relative; width: 300px; height: 100px; overflow: hidden;}

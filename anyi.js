@@ -86,8 +86,23 @@ void function($) {
             f(this.responseText, this.status);
         }
         o.open('POST', u);
-		o.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        o.send(JSON.stringify(d));
+        if('string' == typeof(d)){
+		    o.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            o.send(d);
+        }else{
+            o.setRequestHeader("Content-Type", "multipart/form-data");
+            if(d instanceof FormData){
+                o.send(d);
+            }else{
+                var form= new FormData(); 
+                for (const key in d) {
+                    if (Object.hasOwnProperty.call(d, key)) {
+                        form.append(key, d[key]);
+                    }
+                }
+                o.send(form);
+            }
+        }
     }
 
     ANYI.prototype.send = function(){
@@ -96,25 +111,35 @@ void function($) {
     }
 
     /**
-     * 
+     * 发送表单
      * @param {*} u url
      * @param {*} d 数据
      * @param {*} f 回调函数
      */
-     ANYI.prototype.postform =function(u,d,f) {
+    ANYI.prototype.postform =function(u,d,f) {
         var o = new XMLHttpRequest();
         o.onload = function () {
             f(this.responseText, this.status);
         }
         o.open('POST', u);
-		o.setRequestHeader("Content-Type", "multipart/form-data");
-        var form= new FormData(); 
-        for (const key in d) {
-            if (Object.hasOwnProperty.call(d, key)) {
-                form.append(key, d[key]);
-            }
+        o.setRequestHeader("Content-Type", "multipart/form-data");
+        o.send(new FormData(d));
+    }
+
+    /**
+     * 以json方式发送数据
+     * @param {*} u url
+     * @param {*} d 数据
+     * @param {*} f 回调函数
+     */
+     ANYI.prototype.postjson =function(u,d,f) {
+        var o = new XMLHttpRequest();
+        o.onload = function () {
+            f(this.responseText, this.status);
         }
-        o.send(form);
+        o.open('POST', u);
+		o.setRequestHeader("Content-Type", "text/json");
+        o.send(JSON.stringify(d));
     }
 
 
